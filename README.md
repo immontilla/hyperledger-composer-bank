@@ -1,2 +1,3 @@
 # hyperledger-composer-bank
-A hyperledger composer project
+
+A simple bank network
