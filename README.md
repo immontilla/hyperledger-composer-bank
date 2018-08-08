@@ -202,9 +202,7 @@ Finally, run this script
 sh scripts/publish-rest-server.sh
 ```
 
-Open http://localhost:3000/explorer in a web browser and you will see a *SwaggerUI-styled* web: "Hyperledger Composer REST server".
-
-Additionally, you can run the curl command.
+Open http://localhost:3000/explorer in a web browser and you will see a *SwaggerUI-styled* web: "Hyperledger Composer REST server". Additionally, you can run curl commands.
 
 Create one holder
 ```language-bash
