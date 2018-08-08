@@ -55,9 +55,9 @@ Feature: Sample
             | alice_account1 | aliceId | 400     |
             | bob_account1   | bobId   | 300     |
 
-    Scenario: Bob cannot submit a transaction due to Insuficient funds. from his account to Alice account
+    Scenario: Bob cannot submit a transaction due to Insufficient funds. from his account to Alice account
         When I use the identity bob1
         And I submit the following transaction of type org.example.mynetwork.FundsTransfer
             | sender         | recipient      | amount |
             | bob_account1   | alice_account1 | 1000   |
-        Then I should get an error matching /Insuficient funds./
+        Then I should get an error matching /Insufficient funds./

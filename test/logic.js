@@ -248,7 +248,7 @@ describe('#' + namespace, () => {
         bobAsset.balance.should.equal(300);
     });
 
-    it('Bob cannot submit a transaction due to Insuficient funds. from his account to Alice account', async () => {
+    it('Bob cannot submit a transaction due to Insufficient funds. from his account to Alice account', async () => {
         // Use the identity for Bob.
         await useIdentity(bobCardName);
 
@@ -257,7 +257,7 @@ describe('#' + namespace, () => {
         transaction.sender = factory.newRelationship(namespace, assetType, 'bob_account1');
         transaction.recipient = factory.newRelationship(namespace, assetType, 'alice_account1');
         transaction.amount = 1000;
-        await businessNetworkConnection.submitTransaction(transaction).should.be.rejectedWith(/Insuficient funds./);
+        await businessNetworkConnection.submitTransaction(transaction).should.be.rejectedWith(/Insufficient funds./);
 
     });
 
