@@ -162,7 +162,7 @@ Feature: Sample
 
 ```
 
-If everything went OK, run this scripts in strict order
+If everything went OK, run these scripts in strict order
 ```language-bash
 sh scripts/start-dev-environment.sh 
 sh scripts/generate-bna.sh
@@ -202,7 +202,7 @@ Finally, run this script
 sh scripts/publish-rest-server.sh
 ```
 
-Now you play, opening http://localhost:3000/explorer in a web browser. You will see the "Hyperledger Composer REST server", a SwaggerUI-styled web.
+Open http://localhost:3000/explorer in a web browser and you will see a *SwaggerUI-styled* web: "Hyperledger Composer REST server".
 
 Additionally, you can run the curl command.
 
