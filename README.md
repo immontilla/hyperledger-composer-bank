@@ -196,3 +196,68 @@ registries:
 Command succeeded
 
 ```
+
+Finally, run this script
+```language-bash
+sh scripts/publish-rest-server.sh
+```
+
+Now you play, opening http://localhost:3000/explorer in a web browser. You will see the "Hyperledger Composer REST server", a SwaggerUI-styled web.
+
+Additionally, you can run the curl command.
+
+Create one holder
+```language-bash
+curl -iX POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"$class": "org.example.mynetwork.Holder", "holderId": "1234", "firstName": "bart", "lastName": "simpson" }' 'http://localhost:3000/api/Holder'
+```
+and set a bank account to him
+```language-bash
+curl -iX POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "$class": "org.example.mynetwork.Account", "accountId": "BART", "holder": "org.example.mynetwork.Holder#1234", "balance": 300 }' 'http://localhost:3000/api/Account'
+```
+
+Create another holder
+```language-bash
+curl -iX POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"$class": "org.example.mynetwork.Holder", "holderId": "7890", "firstName": "sideshow", "lastName": "bob" }' 'http://localhost:3000/api/Holder'
+```
+and set a bank account to him too
+```language-bash
+curl -iX POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "$class": "org.example.mynetwork.Account", "accountId": "BOB", "holder": "org.example.mynetwork.Holder#7890", "balance": 100 }' 'http://localhost:3000/api/Account'
+```
+
+You could check the holders running
+```language-bash
+curl -iX GET --header 'Accept: application/json' 'http://localhost:3000/api/Holder'
+```
+
+or check the accounts running
+```language-bash
+curl -iX GET --header 'Accept: application/json' 'http://localhost:3000/api/Account'
+```
+
+To transfer 200 from Bart to Sideshow Bob, run
+```language-bash
+curl -iX POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ "$class": "org.example.mynetwork.FundsTransfer", "sender": "org.example.mynetwork.Account#BART", "recipient": "org.example.mynetwork.Account#BOB", "amount": 200 }' 'http://localhost:3000/api/FundsTransfer'
+```
+
+Finally, if you run:
+```language-bash
+curl -iX GET --header 'Accept: application/json' 'http://localhost:3000/api/Account'
+```
+
+You will get
+```language-bash
+HTTP/1.1 200 OK
+Vary: Origin, Accept-Encoding
+Access-Control-Allow-Credentials: true
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: DENY
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=utf-8
+Content-Length: 260
+ETag: W/"104-ltIIum7o/SCzicWQnkDGczPLxF4"
+Date: Wed, 08 Aug 2018 21:02:48 GMT
+Connection: keep-alive
+
+[{"$class":"org.example.mynetwork.Account","accountId":"BART","holder":"resource:org.example.mynetwork.Holder#1234","balance":100},{"$class":"org.example.mynetwork.Account","accountId":"BOB","holder":"resource:org.example.mynetwork.Holder#7890","balance":300}]
+```
