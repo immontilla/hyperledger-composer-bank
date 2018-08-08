@@ -2,7 +2,7 @@
 
 This is a minimal implementation of a bank as a business network using Hyperledger Composer.
 
-If you're haven't done yet, please, clone this repository running:
+In case you haven't done yet, please, clone this repository running:
 ```language-bash
 git clone https://github.com/immontilla/hyperledger-composer-bank.git && cd hyperledger-composer-bank
 ```
